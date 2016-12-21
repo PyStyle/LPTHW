@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block bodycontent %}
+{% if scene %}
+
+  <h1> {{ scene.title }} </h1>
+  <pre>{{ scene.description }}</pre>
+  {% if scene.urlname == "try_again" %}
+    <p><a href="/">Try Again?</a></p>
+  {% else %}
+    <p>
+      <form action="/game" method="POST">
+        Answer: <input type="text" name="userinput"> <input type="SUBMIT"> <!--kind of like raw_input = -->
+      </form>
+    </p>
+  {% endif %}
+
+{% else %}
+  <p><a href="/">Start at the Beginning</a></p>
+{% endif %}
+{% endblock %}
